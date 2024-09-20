@@ -20,7 +20,7 @@ class HTTP_Server {
         int                client_socket_fd = -1;
         struct sockaddr_in server_addr;
         socklen_t          server_addr_len;
-        HTTP_Response      Response;
+        HTTP_Response      response;
         ifstream           file_reader;
         string             file_path;
 

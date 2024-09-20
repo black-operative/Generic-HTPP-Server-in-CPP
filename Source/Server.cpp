@@ -114,9 +114,9 @@ int HTTP_Server::send_response() {
             response_buffer, 
             sizeof(response_buffer), 
             "%sContent-Type: %s\r\nContent=Length: %d\r\n\r\n",
-            this->Response.header.c_str(),
-            this->Response.content_type.c_str(), 
-            (int)this->Response.body.size()
+            this->response.header.c_str(),
+            this->response.content_type.c_str(), 
+            (int)this->response.body.size()
         );
 
         int byte_count_1 = send(
@@ -128,8 +128,8 @@ int HTTP_Server::send_response() {
 
         int byte_count_2 = send(
             this->client_socket_fd, 
-            this->Response.body.c_str(), 
-            this->Response.body.size(), 
+            this->response.body.c_str(), 
+            this->response.body.size(), 
             0
         );
 
@@ -162,10 +162,10 @@ int HTTP_Server::send_file_res() {
         else if (file_extension == ".css")  { file_content_type = "text/css";               } 
         else if (file_extension == ".js")   { file_content_type = "application/javascript"; }
 
-        this->Response              = {};
-        this->Response.header       = HTTP_STATUS_OK_200;
-        this->Response.content_type = file_content_type;
-        this->Response.body         = file_content;
+        this->response              = {};
+        this->response.header       = HTTP_STATUS_OK_200;
+        this->response.content_type = file_content_type;
+        this->response.body         = file_content;
 
         if (this->send_response() < 0) {
             this->file_reader.close();
@@ -181,10 +181,10 @@ int HTTP_Server::send_file_res() {
 
 int HTTP_Server::not_found_res() {
     try {
-        this->Response              = {};
-        this->Response.header       = HTTP_STATUS_ERR_404,
-        this->Response.content_type = "text/html";
-        this->Response.body         = "<!DOCTYPE html><html lang=\"en\"><head></head><body><h1>404 NOT FOUND</h1></body></html>";
+        this->response              = {};
+        this->response.header       = HTTP_STATUS_ERR_404,
+        this->response.content_type = "text/html";
+        this->response.body         = "<!DOCTYPE html><html lang=\"en\"><head></head><body><h1>404 NOT FOUND</h1></body></html>";
 
         int status_code = this->send_response();
         if (status_code < 0) { throw ERROR_CODE::SERVER_SEND_RESPONSE; }
@@ -197,10 +197,10 @@ int HTTP_Server::not_found_res() {
 
 int HTTP_Server::illegal_method_res() {
     try {
-        this->Response              = {};
-        this->Response.header       = HTTP_STATUS_ERR_405,
-        this->Response.content_type = "text/html";
-        this->Response.body         = "<!DOCTYPE html><html lang=\"en\"><head></head><body><h1>405 METHOD NOT ALLOWED</h1></body></html>";
+        this->response              = {};
+        this->response.header       = HTTP_STATUS_ERR_405,
+        this->response.content_type = "text/html";
+        this->response.body         = "<!DOCTYPE html><html lang=\"en\"><head></head><body><h1>405 METHOD NOT ALLOWED</h1></body></html>";
 
         int status_code = this->send_response();
         if (status_code < 0) { throw ERROR_CODE::SERVER_SEND_RESPONSE; }
