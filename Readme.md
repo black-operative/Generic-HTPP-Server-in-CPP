@@ -96,10 +96,8 @@ struct HTTP_Response {
 
 `HTTP_Response` is a C++ Structure that contains 3 string properties:
 <pre>
-<code>- header       : Defines <a href = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP">HTTP Version</a> to be used and 
-                 <a href = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status'>HTTP Response status code</a>
-- content_type : Defines type of content being sent using HTTP response 
-                 according to <a href = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types'>Media / MIME Types</a>
+<code>- header       : Defines <a href = "https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Evolution_of_HTTP">HTTP Version</a> to be used and <a href = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status'>HTTP Response status code</a>
+- content_type : Defines type of content being sent using HTTP response according to <a href = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types'>Media / MIME Types</a>
 - body         : Content to be sent using HTTP response
 </code>
 </pre>
