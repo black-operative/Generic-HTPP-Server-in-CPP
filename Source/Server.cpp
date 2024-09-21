@@ -158,9 +158,9 @@ int HTTP_Server::send_file_res() {
         string file_extension = this->file_path.substr(this->file_path.find("."));
         string file_content_type;
 
-        if      (file_extension == ".html") { file_content_type = "text/html";              } 
-        else if (file_extension == ".css")  { file_content_type = "text/css";               } 
-        else if (file_extension == ".js")   { file_content_type = "application/javascript"; }
+        if      (file_extension == ".html") { file_content_type = CONTENT_HTML; } 
+        else if (file_extension == ".css")  { file_content_type = CONTENT_CSS;  } 
+        else if (file_extension == ".js")   { file_content_type = CONTENT_JS;   }
 
         this->response              = {};
         this->response.header       = HTTP_STATUS_OK_200;
