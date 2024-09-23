@@ -369,7 +369,7 @@ int send_response()
 
 Sends the content of a requested file as an HTTP response with [appropriate headers](#macro-definitions) and formatting.
 
-```c
+```cpp
 int send_file_res()
 ```
 
@@ -384,7 +384,7 @@ int send_file_res()
 
 Constructs and sends an Error 404 Not Found HTTP response to client socket.
 
-```c
+```cpp
 int not_found_res()
 ```
 
@@ -396,7 +396,7 @@ int not_found_res()
 
 Constructs and sends a Error 405 Method not allowed HTTP response to client socket.
 
-```c
+```cpp
 int illegal_method_res() 
 ```
 
@@ -407,6 +407,10 @@ int illegal_method_res()
 ### 9. HTTP_Server::close_server()
 
 Closes all active connections, frees occupied TCP/IP Port and shuts down the server.
+
+```cpp
+void close_server()
+```
 
 - Invokes [`close()`](#14-close) on `HTTP_Server::client_socket_fd`.
 - Invokes [`close()`](#14-close) on `HTTP_Server::server_socket_fd`.
