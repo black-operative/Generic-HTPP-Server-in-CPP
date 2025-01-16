@@ -30,6 +30,38 @@ You can use the following methods to clone this repo to your local machine :
     gh repo clone black-operative/Generic-HTTP-Server-In-CPP
     ```
 
+## Operation
+
+You will need to compile the project from source, a `CMakeLists.txt` file has been included for that purpose. The Project has the following properties by default :
+
+- Build System : `CMake`
+- Generator : `Unix Makefiles`
+- C++ standard : `C++20`
+- Source File Directory : `src/`
+- Header File Directory : `include/`
+- HTML/CSS + JS Directory : `Web/`
+
+To compile the project from source:
+
+- Install [CMake](https://cmake.org/download/)
+- Navigate to Project directory
+- You can now run one of the following commands :
+  - Long method :
+
+    ```bash
+    mkdir build
+    cd build
+    cmake ..
+    cmake --build .
+    ```
+
+  - Short method :
+
+    ```bash
+    cmake -B build
+    cmake --build ./build
+    ```
+
 ## Features
 
 - [**OOP**](https://en.wikipedia.org/wiki/Object-oriented_programming) Architecture
@@ -102,12 +134,21 @@ struct HTTP_Response {
 </code>
 </pre>
 
+An Example :
+
+```cpp
+HTTP_Response response;
+response.header       = "HTTP/1.1 200 OK\r\n";
+response.content_type = "text/html";
+response.body         = "<html><body><h1>Hello World</h1></body></html>";
+```
+
 ## Macro Definitions
 
 The following macro definitions are used in the project :
 
 ```plaintext
--> BUFFER_SIZE          16384                                  - 16 Kilo Bytes         
+-> BUFFER_SIZE          65536                                  - 64 KibiBytes         
 -> CONTENT_HTML         "text/html"                            - HTTP Request : content Type HTML
 -> CONTENT_CSS          "text/css"                             - HTTP Request : content Type CSS  
 -> CONTENT_JS           "application/javascript"               - HTTP Request : content Type JavaScript
@@ -116,7 +157,7 @@ The following macro definitions are used in the project :
 -> HTTP_STATUS_ERR_405  "HTTP/1.1 405 METHOD NOT ALLOWED\r\n"  - HTTP 405 Method Not Allowed Response Header
 ```
 
-## StdLib Functions / Data Structures used
+## Standard Library Functions/Structures
 
 ### 1. socket()
 
@@ -349,7 +390,7 @@ void handle_client()
 - Extracts HTTP headers (Method, Path, Version) from the request buffer by invoking [`sscanf()`](#7-sscanf).
 - Checks for valid HTTP Method supported (i.e. `GET`).
 - Sets `HTTP_Server::file_path` private property to appropriate request path.
-- Invokes [`HTTP_Server::send_file_res()`](#3-send_file_res).
+- Invokes [`HTTP_Server::send_file_res()`](#6-http_serversend_file_res).
 - Does NOT return any status code.
 
 ### 5. HTTP_Server::send_response()
