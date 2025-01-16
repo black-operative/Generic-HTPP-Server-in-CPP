@@ -1,6 +1,6 @@
 # Generic HTTP Web server in C++
 
-This project is an extension of the [Generic HTTP Server in C Project](https://github.com/rudrakshm64/Generic-HTTP-Server-In-C) and it aims to recreate the minimalist and a Generic HTTP server using the C++ programming language, an Object Oriented Approach and Advanced Error Handling.
+This project is an extension of the [Generic HTTP Server in C Project](https://github.com/black-operative/Generic-HTTP-Server-In-C) and it aims to recreate the minimalist and a Generic HTTP server using the C++ programming language, an Object Oriented Approach and Advanced Error Handling.
 
 ## Installation
 
