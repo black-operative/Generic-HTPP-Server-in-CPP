@@ -1,5 +1,14 @@
-#include "../Headers/Server.hpp"
-#include "../Headers/Errors.hpp"
+#include <iostream>
+
+#include <cstring>
+#include <unistd.h>
+
+#include "Server.hpp"
+#include "Errors.hpp"
+
+using std::cout;
+using std::cerr;
+using std::endl;
 
 int HTTP_Server::init_server() {
     try {
@@ -89,15 +98,15 @@ void HTTP_Server::handle_client() {
 
         if (s_path == "/" || s_path == "/index.html") {
             s_path.clear();
-            s_path = "../Demo-Files/index.html";
+            s_path = "../Web/index.html";
             this->file_path = s_path;
         } else if (s_path == "/style.css") {
             s_path.clear();
-            s_path = "../Demo-Files/style.css";
+            s_path = "../Web/style.css";
             this->file_path = s_path;
         } else if (s_path == "/app.js") {
             s_path.clear();
-            s_path = "../Demo-Files/index.js";
+            s_path = "../Web/index.js";
             this->file_path = s_path;
         }
 

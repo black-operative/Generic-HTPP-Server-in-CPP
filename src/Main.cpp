@@ -1,4 +1,10 @@
-#include "../Headers/Server.hpp"
+#include <iostream>
+#include <csignal>
+
+#include "Server.hpp"
+
+using std::cout;
+using std::endl;
 
 HTTP_Server *server = nullptr;
 
